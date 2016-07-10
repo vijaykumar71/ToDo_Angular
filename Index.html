@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+<html lang="en" ng-app="noteApp" >
+<head>
+    <meta charset="utf-8" />
+    <title>Simple data bind </title>
+    <link rel="stylesheet" href="app/css/bootstrap.min.css" />
+
+    <link href="app/css/Task.css" rel="stylesheet" />
+
+</head>
+<body ng-controller="toDoNoteController">
+    <div class="row container-fluid">
+        <div class="nav-bar">
+            <p>KEEP MEMORY</p>
+        </div>
+    </div>
+    <div class="container-fluid row">
+        <div class=" col-sm-12 main-container ">
+            <div>
+                <div class="col-sm-offset-3 col-sm-6 form-background" id="task">
+                    <div id="suggetion-text">
+                        <input type="text" class="task-title" placeholder="Title" ng-model="title" />
+
+                        <textarea class="task-content" id="content" rows="6" placeholder="content" ng-model="content"></textarea>
+                        <input type="button" value="Add Task" class="add-button btn btn-primary" id="add" ng-click="addTask();" />
+                    </div>
+
+                </div>
+                <div class="col-sm-3">
+                </div>
+
+            </div>
+            <div class="col-sm-12" id="item">
+                <div  ng-repeat="note in notes">
+                    <div class="col-sm-offset-1 col-sm-3 task-container">
+                        <div>
+                            <p contenteditable="true" class="title-text" ng-model=note.title>{{note.title}}</p>
+                        </div>
+                        <div>
+                            <p contenteditable="true" class="content-text" ng-model=note.content>{{note.content}}</p>
+                        </div>
+                        <div>
+                            <input type="button" value="Save" class="btn btn-primary" ng-click="saveEditedContent(note)">
+                        </div>
+                        <div>
+                            <div class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">More </a>
+                                <ul class="dropdown-menu">
+                                    <li><a ng-click="deleteTask(note); ">Delete</a></li>
+                                    <li><a ng-click="editTask()">Edit</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <script src="app/js/jquery-1.10.2.min.js"></script>
+    <script src="app/js/bootstrap.min.js"></script>
+    <script src="app/js/angular.js"></script>
+    <script src="app/js/ngStorage.js"></script>
+    <script src="app/app.js"></script>
+</body>
+</html>
+
+
